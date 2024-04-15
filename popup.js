@@ -8,27 +8,11 @@ function handleResponse(response) {
     var blob = new Blob([jsonString], { type: 'application/json' });
     var url = URL.createObjectURL(blob);
     console.log(url);
-    const apiUrl = 'https://alumni-backend-6954.onrender.com/alumnis';
-    fetch(apiUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: jsonString
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log('Response:', data);
-            saveComplete();
-        })
-        .catch(error => {
-            console.error('There was a problem with the fetch operation:', error);
-    });
+    chrome.downloads.download({
+        url: url,
+        filename: 'alumni.json',
+        saveAs: true
+    }, saveComplete);
 }
 
 function importantContent(data){
