@@ -1,0 +1,29 @@
+  {
+    "name": "LinkedIn Parser",
+    "version": "1.0",
+    "description": "Save LinkedIn search on your dashboard",
+    "permissions": ["activeTab", "declarativeContent", "downloads", "storage"],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [{
+      "matches": ["https://linkedin.com/*","https://www.linkedin.com/*"],
+      "js": ["content.js"]
+    }],
+    "action": {
+      "default_popup": "popup.html",
+      "default_icons": {
+        "16": "images/16.png",
+        "32": "images/32.png",
+        "48": "images/48.png",
+        "128": "images/128.png"
+      }
+    },
+    "icons": {
+      "16": "images/16.png",
+      "32": "images/32.png",
+      "48": "images/48.png",
+      "128": "images/128.png"
+    },
+    "manifest_version": 3
+  }
