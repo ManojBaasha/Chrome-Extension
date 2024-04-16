@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Hello Extensions",
+  "description": "Base Level Extension",
+  "version": "1.0",
+  "permissions": ["activeTab"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "stick3.png"
+  },
+  "content_scripts": [
+    {
+      "js": ["background.js"],
+      "matches": ["https://my.ucdavis.edu/schedulebuilder/*"]
+    }
+  ]
+}
