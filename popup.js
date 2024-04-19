@@ -3,53 +3,12 @@ function handleResponse(response) {
     console.log("Response received: ", response);
     var statusLabel = document.getElementById('statusLabel');
     statusLabel.innerHTML = 'Saving';
-    var important = importantContent(response);
-    var jsonString = JSON.stringify(important, null, 2);
-    var blob = new Blob([jsonString], { type: 'application/json' });
-    var url = URL.createObjectURL(blob);
-    console.log(url);
-    chrome.downloads.download({
-        url: url,
-        filename: 'alumni.json',
-        saveAs: true
-    }, saveComplete);
-}
-
-function importantContent(data){
-    var important = {};
-    important["url"] = data["url"];
-    important["name"] = data["name"];
-    important["html"] = data["html_content"];
-    important["errorParsing"] = data["error"];
-    
-    for(const key in data.education){
-        const education = data.education[key];
-        if(!key.toLowerCase().includes('university of california, davis')){
-            const degree = education.degree? education.degree : "";
-            const graduation = education.graduation? education.graduation.split(" - ")[1] : "";
-            important["otherEducation"] = degree + " at " + key + " in " + graduation
-        }
-        else{
-            const ucDavisGraduationYear = education ? education.graduation.split(' - ')[1] : null;
-            important["major"] = education ? education.degree : "";
-            important["graduationYear"] = ucDavisGraduationYear? ucDavisGraduationYear.split(' ') : null;
-            important["graduationYear"] = important["graduationYear"] ? important["graduationYear"][important["graduationYear"].length - 1] : "";
-            important["graduationYear"] = parseInt(important["graduationYear"]);
-        }
-    }
-
-    for (const key in data.experience) {
-        const jobArray = data.experience[key];
-        // Iterate through each job object in the jobArray
-        jobArray.forEach(job => {
-            important["company"] = key;
-            important["job"] = job.job ? job.job : "";
-            important["location"] = job.location? job.location : data["location"];
-        });
-    }
-
-    console.log(important);
-    return important;
+    // var important = importantContent(response);
+    // var jsonString = JSON.stringify(important, null, 2);
+    // var blob = new Blob([jsonString], { type: 'application/json' });
+    // var url = URL.createObjectURL(blob);
+    // console.log(url);
+    saveComplete();
 }
 
 // Function to send message to content script to scrape data
