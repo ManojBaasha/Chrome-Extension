@@ -3,11 +3,6 @@ function handleResponse(response) {
     console.log("Response received: ", response);
     var statusLabel = document.getElementById('statusLabel');
     statusLabel.innerHTML = 'Saving';
-    // var important = importantContent(response);
-    // var jsonString = JSON.stringify(important, null, 2);
-    // var blob = new Blob([jsonString], { type: 'application/json' });
-    // var url = URL.createObjectURL(blob);
-    // console.log(url);
     saveComplete();
 }
 
