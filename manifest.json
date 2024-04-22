@@ -1,0 +1,34 @@
+{
+    "name": "Schedule Builder Extension",
+    "version": "1.0",
+    "description": "Save your schedule on google calendar",
+    "permissions": ["activeTab", "declarativeContent", "downloads", "storage"],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://my.ucdavis.edu/schedulebuilder/*",
+                "https://my.ucdavis.edu/schedulebuilder/index.cfm/*"
+            ],
+            "js": ["content.js"]
+        }
+    ],
+    "action": {
+        "default_popup": "popup.html",
+        "default_icons": {
+            "16": "images/ucdavisseal16.png",
+            "32": "images/ucdavisseal32.png",
+            "64": "images/ucdavisseal64.png",
+            "128": "images/ucdavisseal128.png"
+        }
+    },
+    "icons": {
+        "16": "images/ucdavisseal16.png",
+        "32": "images/ucdavisseal32.png",
+        "64": "images/ucdavisseal64.png",
+        "128": "images/ucdavisseal128.png"
+    },
+    "manifest_version": 3
+}
