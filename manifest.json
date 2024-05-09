@@ -1,7 +1,7 @@
 {
     "name": "Schedule Builder Extension",
-    "version": "1.0",
-    "description": "Save your schedule on google calendar",
+    "version": "0.1.0",
+    "description": "Save your schedule on your google calendar easily",
     "permissions": ["activeTab", "declarativeContent", "downloads", "storage"],
     "background": {
         "service_worker": "background.js"
@@ -12,7 +12,8 @@
                 "https://my.ucdavis.edu/schedulebuilder/*",
                 "https://my.ucdavis.edu/schedulebuilder/index.cfm/*"
             ],
-            "js": ["content.js"]
+            "js": ["content.js"],
+            "run_at": "document_idle"
         }
     ],
     "action": {
