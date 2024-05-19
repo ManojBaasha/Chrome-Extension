@@ -1,8 +1,8 @@
 {
     "name": "Schedule Builder Extension",
-    "version": "0.1.0",
+    "version": "1.0",
     "description": "Save your schedule on your google calendar easily",
-    "permissions": ["activeTab", "declarativeContent", "downloads", "storage"],
+    "permissions": ["activeTab", "scripting"],
     "background": {
         "service_worker": "background.js"
     },
