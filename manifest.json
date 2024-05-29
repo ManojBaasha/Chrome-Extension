@@ -1,35 +1,44 @@
 {
-    "name": "Schedule Builder Extension",
-    "version": "1.0",
-    "description": "Save your schedule on your google calendar easily",
-    "permissions": ["activeTab", "scripting"],
-    "background": {
-        "service_worker": "background.js"
-    },
-    "content_scripts": [
-        {
-            "matches": [
-                "https://my.ucdavis.edu/schedulebuilder/*",
-                "https://my.ucdavis.edu/schedulebuilder/index.cfm/*"
-            ],
-            "js": ["content.js"],
-            "run_at": "document_idle"
-        }
-    ],
-    "action": {
-        "default_popup": "popup.html",
-        "default_icons": {
-            "16": "images/ucdavisseal16.png",
-            "32": "images/ucdavisseal32.png",
-            "64": "images/ucdavisseal64.png",
-            "128": "images/ucdavisseal128.png"
-        }
-    },
-    "icons": {
-        "16": "images/ucdavisseal16.png",
-        "32": "images/ucdavisseal32.png",
-        "64": "images/ucdavisseal64.png",
-        "128": "images/ucdavisseal128.png"
-    },
-    "manifest_version": 3
+  "name": "Schedule Builder Extension",
+  "version": "1.0",
+  "description": "Save your schedule on your google calendar easily",
+  "permissions": [
+    "tabs",
+    "https://my.ucdavis.edu/schedulebuilder/*",
+    "https://apis.google.com/js/*",
+    "identity"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "oauth2": {
+    "client_id": "814139692083-l2b8de6n07ni5v9jr1ht5ska14u2sk5v.apps.googleusercontent.com",
+    "scopes": ["https://www.googleapis.com/auth/calendar"]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://my.ucdavis.edu/schedulebuilder/*",
+        "https://my.ucdavis.edu/schedulebuilder/index.cfm/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icons": {
+      "16": "images/ucdavisseal16.png",
+      "32": "images/ucdavisseal32.png",
+      "64": "images/ucdavisseal64.png",
+      "128": "images/ucdavisseal128.png"
+    }
+  },
+  "icons": {
+    "16": "images/ucdavisseal16.png",
+    "32": "images/ucdavisseal32.png",
+    "64": "images/ucdavisseal64.png",
+    "128": "images/ucdavisseal128.png"
+  },
+  "manifest_version": 3
 }
